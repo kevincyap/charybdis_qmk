@@ -48,6 +48,9 @@
 #endif
 #define RGBLIGHT_LED_COUNT 36
 
+/* Invert vertical drag-scroll direction. */
+#define BK_POINTING_DEVICE_DRAGSCROLL_REVERSE_Y
+
 /* Charybdis-specific features. */
 
 #ifdef POINTING_DEVICE_ENABLE
