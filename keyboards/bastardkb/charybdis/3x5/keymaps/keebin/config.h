@@ -18,8 +18,15 @@
 
 #ifdef VIA_ENABLE
 /* VIA configuration. */
-#    define DYNAMIC_KEYMAP_LAYER_COUNT 8
+#    define DYNAMIC_KEYMAP_LAYER_COUNT 7
 #endif // VIA_ENABLE
+
+#ifdef VIAL_ENABLE
+/* Vial configuration. Update UID if you distribute multiple boards. */
+#    define VIAL_KEYBOARD_UID {0xB1, 0x83, 0x4D, 0xC7, 0x09, 0x5A, 0x2E, 0x61}
+#    define VIAL_UNLOCK_COMBO_ROWS {0, 0}
+#    define VIAL_UNLOCK_COMBO_COLS {0, 1}
+#endif // VIAL_ENABLE
 
 #ifndef __arm__
 /* Disable unused features. */

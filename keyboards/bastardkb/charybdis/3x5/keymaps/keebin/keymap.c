@@ -25,7 +25,6 @@ enum charybdis_keymap_layers {
     LAYER_FUNCTION,
     LAYER_NAVIGATION,
     LAYER_MEDIA,
-    LAYER_POINTER,
     LAYER_BUTTON,
     LAYER_NUMERAL,
     LAYER_SYMBOLS,
@@ -55,7 +54,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 // is a plain key, and DOT triggers the Pointer/Mouse layer instead (avoids
 // relying on the weaker right pinky for a frequently-used layer).
 #define _L_BTN(KC) LT(LAYER_BUTTON, KC)
-#define DOT_MOU LT(LAYER_POINTER, KC_DOT)
+#define DOT_MOU LT(LAYER_BUTTON, KC_DOT)
 
 #ifndef POINTING_DEVICE_ENABLE
 #    define DRGSCRL KC_NO
@@ -115,24 +114,16 @@ static uint16_t auto_pointer_layer_timer = 0;
     XXXXXXX, XXXXXXX, XXXXXXX,  EE_CLR, QK_BOOT, QK_BOOT,  EE_CLR, XXXXXXX, XXXXXXX, XXXXXXX, \
                       _______, KC_MPLY, KC_MSTP, KC_MSTP, KC_MPLY
 
-/** \brief Mouse emulation and pointer functions. */
-#define LAYOUT_LAYER_POINTER                                                                  \
-    QK_BOOT,  EE_CLR, XXXXXXX, DPI_MOD, S_D_MOD, S_D_MOD, DPI_MOD, XXXXXXX,  EE_CLR, QK_BOOT, \
-    ______________HOME_ROW_GACS_L______________, ______________HOME_ROW_GACS_R______________, \
-    _______, DRGSCRL, SNIPING, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, SNIPING, DRGSCRL, _______, \
-                      MS_BTN2, MS_BTN1, MS_BTN3, MS_BTN3, MS_BTN1
-
 /**
- * \brief Button layer.
+ * \brief Combined Button + Pointer layer.
  *
- * Clipboard ops duplicated left/right, GACS mods on the home row, F13-F17 on
- * the left hand for app-specific shortcuts, and mouse buttons on the thumbs.
- * Matches the Corne's BUTTON layer (reached here via the bottom pinkies).
+ * Left hand keeps Button-layer behavior (clipboard + F13-F17) while the right
+ * hand top/bottom rows are repurposed for pointer behavior controls.
  */
 #define LAYOUT_LAYER_BUTTON                                                                   \
-    LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), LCTL(KC_Y), LCTL(KC_Y), LCTL(KC_V), LCTL(KC_C), LCTL(KC_X), LCTL(KC_Z), \
+    LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), LCTL(KC_Y), S_D_MOD, S_D_RMOD, DPI_MOD, DPI_RMOD, XXXXXXX, \
     ______________HOME_ROW_GACS_L______________, ______________HOME_ROW_GACS_R______________, \
-      KC_F13,    KC_F14,    KC_F15,    KC_F16,    KC_F17, LCTL(KC_Y), LCTL(KC_V), LCTL(KC_C), LCTL(KC_X), LCTL(KC_Z), \
+      XXXXXXX,    DRGSCRL,    SNIPING,    XXXXXXX,    XXXXXXX, SNP_TOG, DRG_TOG, XXXXXXX, XXXXXXX, XXXXXXX, \
                       MS_BTN3, MS_BTN1, MS_BTN2, MS_BTN2, MS_BTN1
 
 /**
@@ -238,9 +229,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_FUNCTION] = LAYOUT_wrapper(LAYOUT_LAYER_FUNCTION),
   [LAYER_NAVIGATION] = LAYOUT_wrapper(LAYOUT_LAYER_NAVIGATION),
   [LAYER_MEDIA] = LAYOUT_wrapper(LAYOUT_LAYER_MEDIA),
-  [LAYER_NUMERAL] = LAYOUT_wrapper(LAYOUT_LAYER_NUMERAL),
-  [LAYER_POINTER] = LAYOUT_wrapper(LAYOUT_LAYER_POINTER),
   [LAYER_BUTTON] = LAYOUT_wrapper(LAYOUT_LAYER_BUTTON),
+  [LAYER_NUMERAL] = LAYOUT_wrapper(LAYOUT_LAYER_NUMERAL),
   [LAYER_SYMBOLS] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS),
 };
 
