@@ -100,7 +100,7 @@ static uint16_t auto_pointer_layer_timer = 0;
       KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_PSCR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT, \
       KC_F11,   KC_F4,   KC_F5,   KC_F6, KC_SCRL, ______________HOME_ROW_GACS_R______________, \
       KC_F10,   KC_F1,   KC_F2,   KC_F3, KC_PAUS, XXXXXXX, XXXXXXX, XXXXXXX,  KC_RALT, XXXXXXX, \
-                      XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX
+                      XXXXXXX, QK_BOOT, _______, XXXXXXX, XXXXXXX
 
 /**
  * \brief Media layer.
@@ -123,7 +123,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define LAYOUT_LAYER_BUTTON                                                                   \
     LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), LCTL(KC_Y), S_D_MOD, S_D_RMOD, DPI_MOD, DPI_RMOD, XXXXXXX, \
     ______________HOME_ROW_GACS_L______________, ______________HOME_ROW_GACS_R______________, \
-      XXXXXXX,    DRGSCRL,    SNIPING,    XXXXXXX,    XXXXXXX, SNP_TOG, DRG_TOG, XXXXXXX, XXXXXXX, XXXXXXX, \
+      XXXXXXX,    XXXXXXX,    DRGSCRL,    SNIPING,    XXXXXXX, XXXXXXX, SNP_TOG, DRG_TOG, XXXXXXX, XXXXXXX, \
                       MS_BTN3, MS_BTN1, MS_BTN2, MS_BTN2, MS_BTN1
 
 /**
