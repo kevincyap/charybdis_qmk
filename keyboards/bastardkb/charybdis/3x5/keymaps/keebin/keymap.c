@@ -51,9 +51,9 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define BSP_NUM LT(LAYER_NUMERAL, KC_BSPC)
 // Matches ZMK Corne bottom pinkies: u_lt U_BUTTON Z / SLASH. NOTE: unlike the
 // Corne, the left pinky (Z) is a momentary layer switch and the right pinky
-// (SLSH) toggles the layer on/off.
+// (SLSH) is also a momentary layer switch.
 #define _L_BTN(KC) LT(LAYER_BUTTON, KC)
-#define SLS_TOG TG(LAYER_BUTTON)
+#define _R_BTN(KC) LT(LAYER_BUTTON, KC)
 
 #ifndef POINTING_DEVICE_ENABLE
 #    define DRGSCRL KC_NO
@@ -67,7 +67,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define LAYOUT_LAYER_BASE                                                                     \
        KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, \
        KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L, KC_QUOT, \
-  KC_Z,    KC_X,    KC_C, KC_V,    KC_B,    KC_N,    KC_M, KC_COMM, KC_DOT, SLS_TOG, \
+  KC_Z,    KC_X,    KC_C, KC_V,    KC_B,    KC_N,    KC_M, KC_COMM, KC_DOT, _R_BTN(KC_SLSH), \
                       ESC_MED, SPC_NAV, TAB_FUN, ENT_SYM, BSP_NUM
 
 /** Convenience row shorthands. */
@@ -122,7 +122,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define LAYOUT_LAYER_BUTTON                                                                   \
     LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), LCTL(KC_Y), S_D_MOD, S_D_RMOD, DPI_MOD, DPI_RMOD, XXXXXXX, \
     ______________HOME_ROW_GACS_L______________, ______________HOME_ROW_GACS_R______________, \
-      XXXXXXX,    XXXXXXX,    DRGSCRL,    SNIPING,    XXXXXXX, XXXXXXX, SNIPING, DRGSCRL,   SNP_TOG, DRG_TOG, \
+      XXXXXXX,    XXXXXXX,    DRGSCRL,    SNIPING,    XXXXXXX, DRG_TOG, SNIPING, DRGSCRL,   SNP_TOG, XXXXXXX, \
                       MS_BTN3, MS_BTN1, MS_BTN2, MS_BTN2, MS_BTN1
 
 /**
