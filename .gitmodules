@@ -1,3 +1,4 @@
 [submodule "modules/bastardkb"]
 	path = modules/bastardkb
-	url = https://github.com/Bastardkb/qmk_modules.git
+	url = https://github.com/kevincyap/qmk_modules.git
+	branch = keebin-custom
