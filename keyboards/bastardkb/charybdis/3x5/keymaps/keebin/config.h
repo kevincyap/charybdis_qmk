@@ -28,6 +28,13 @@
 #    define VIAL_UNLOCK_COMBO_COLS {0, 1}
 #endif // VIAL_ENABLE
 
+/* Match the ZMK F + left inner Tab Caps Word combo. */
+#define CAPS_WORD_COMBO QK_USER_0
+#define ARGOS_COMBO_0_KEYS {LSFT_T(KC_F), LT(1, KC_TAB), COMBO_END}
+#define ARGOS_COMBO_0_RESULT CAPS_WORD_COMBO
+#define ARGOS_COMBO_0_TERM 50
+#define COMBO_SHOULD_TRIGGER
+
 #ifndef __arm__
 /* Disable unused features. */
 #    define NO_ACTION_ONESHOT
@@ -49,7 +56,15 @@
 #define RGBLIGHT_LED_COUNT 36
 
 /* Invert vertical drag-scroll direction. */
-#define BK_POINTING_DEVICE_DRAGSCROLL_REVERSE_Y
+#define BK_POINTING_DEVICE_BK_POINTING_DEVICE_DRAGSCROLL_REVERSE_Y
+
+/* Pointer sensitivity: 300-1000 DPI and 100-300 sniping DPI. */
+#define BK_POINTING_DEVICE_MINIMUM_DEFAULT_DPI 300
+#define BK_POINTING_DEVICE_DEFAULT_DPI_CONFIG_STEP 100
+#define BK_POINTING_DEVICE_DEFAULT_DPI_STEPS 8
+#define BK_POINTING_DEVICE_MINIMUM_SNIPING_DPI 100
+#define BK_POINTING_DEVICE_SNIPING_DPI_CONFIG_STEP 100
+#define BK_POINTING_DEVICE_SNIPING_DPI_STEPS 3
 
 /* Charybdis-specific features. */
 

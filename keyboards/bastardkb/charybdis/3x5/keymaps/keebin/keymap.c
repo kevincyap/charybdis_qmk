@@ -139,7 +139,7 @@ static uint16_t auto_pointer_layer_timer = 0;
     _______________DEAD_HALF_ROW_______________, LCTL(KC_Y), LCTL(KC_V), LCTL(KC_C), LCTL(KC_X), LCTL(KC_Z), \
     ______________HOME_ROW_GACS_L______________, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, KC_CAPS, \
     LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), LCTL(KC_Y), KC_HOME, KC_PGDN, KC_PGUP,  KC_END, XXXXXXX, \
-                      XXXXXXX, _______, XXXXXXX,  KC_ENT, KC_BSPC
+                      XXXXXXX, _______, XXXXXXX,  KC_ENT, KC_DEL
 
 /**
  * \brief Numeral layout.
@@ -231,5 +231,41 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_NUMERAL] = LAYOUT_wrapper(LAYOUT_LAYER_NUMERAL),
   [LAYER_SYMBOLS] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS),
 };
+
+  bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
+    (void)combo;
+    (void)keycode;
+    (void)record;
+
+    if (combo_index == 0) {
+      return get_highest_layer(layer_state | default_layer_state) == LAYER_BASE;
+    }
+    return true;
+  }
+
+  bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (keycode != CAPS_WORD_COMBO) {
+      return true;
+    }
+
+    if (record->event.pressed) {
+      if ((get_mods() | get_oneshot_mods()) & MOD_MASK_SHIFT) {
+        uint8_t saved_mods = get_mods();
+        uint8_t saved_oneshot_mods = get_oneshot_mods();
+
+        del_mods(MOD_MASK_SHIFT);
+        del_oneshot_mods(MOD_MASK_SHIFT);
+        send_keyboard_report();
+        tap_code(KC_CAPS);
+        set_mods(saved_mods);
+        set_oneshot_mods(saved_oneshot_mods);
+        send_keyboard_report();
+      } else {
+        caps_word_toggle();
+      }
+    }
+
+    return false;
+  }
 
 // clang-format on
