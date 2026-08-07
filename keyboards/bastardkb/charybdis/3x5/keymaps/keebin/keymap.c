@@ -139,7 +139,7 @@ static uint16_t auto_pointer_layer_timer = 0;
     _______________DEAD_HALF_ROW_______________, LCTL(KC_Y), LCTL(KC_V), LCTL(KC_C), LCTL(KC_X), LCTL(KC_Z), \
     ______________HOME_ROW_GACS_L______________, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, KC_CAPS, \
     LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), LCTL(KC_Y), KC_HOME, KC_PGDN, KC_PGUP,  KC_END, XXXXXXX, \
-                      XXXXXXX, _______, XXXXXXX,  KC_ENT, KC_DEL
+                      XXXXXXX, _______, XXXXXXX,  KC_DEL, KC_BSPC
 
 /**
  * \brief Numeral layout.
